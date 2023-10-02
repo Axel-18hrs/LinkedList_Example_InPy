@@ -6,8 +6,18 @@ class LinkedList:
     def __init__(self):
         self.head = None
 
-    def add(self, value):
-        new_node = Node(value)
+    def push(self, data):
+        new_node = Node(data)
+
+        if self.head is None:
+            self.head = new_node
+            return
+
+        new_node.next = self.head
+        self.head = new_node
+
+    def append(self, data):
+        new_node = Node(data)
 
         if self.head is None:
             self.head = new_node
@@ -15,16 +25,26 @@ class LinkedList:
 
         current_node = self.head
         while current_node.next is not None:
-            if current_node.next is None:
-                break
             current_node = current_node.next
         current_node.next = new_node
 
-    def push(self, data):
-        new_node = Node(data)
+    def add(self, value):
+        new_node = Node(value)
 
-        new_node.next = self.head
-        self.head = new_node
+        if self.head is None:
+            self.head = new_node
+            return
+
+        if new_node.data < self.head.data:
+            new_node.next = self.head
+            self.head = new_node
+            return
+
+        current_node = self.head
+        while current_node.next is not None and current_node.next.data < new_node.data:
+            current_node = current_node.next
+        new_node.next = current_node.next
+        current_node.next = new_node
 
     def remove(self, data):
         if self.head.data == data:
