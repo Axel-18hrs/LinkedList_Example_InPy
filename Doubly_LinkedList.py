@@ -1,7 +1,7 @@
 from Node import Node
 
 
-class LinkedList:
+class DoublyLinkedList:
 
     def __init__(self):
         self.head = None
@@ -14,6 +14,7 @@ class LinkedList:
             return
 
         new_node.next = self.head
+        self.head.prev = new_node
         self.head = new_node
 
     def append(self, data):
@@ -27,6 +28,7 @@ class LinkedList:
         while current_node.next is not None:
             current_node = current_node.next
         current_node.next = new_node
+        new_node.prev = current_node
 
     def add(self, value):
         new_node = Node(value)
@@ -44,6 +46,7 @@ class LinkedList:
         while current_node.next is not None and current_node.next.data < new_node.data:
             current_node = current_node.next
         new_node.next = current_node.next
+        new_node.prev = current_node
         current_node.next = new_node
 
     def remove(self, data):
@@ -54,6 +57,7 @@ class LinkedList:
         while current_node.next is not None:
             if current_node.next.data == data:
                 current_node.next = current_node.next.next
+                current_node.next.prev = current_node
                 return
             current_node = current_node.next
 
