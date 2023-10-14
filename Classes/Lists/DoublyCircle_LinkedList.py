@@ -24,7 +24,7 @@ class DoublyCircleLinkedList(ListOperations):
             print("It already exists")
             return
 
-        # case 3: Head has a value less than that of the new node
+        # case 3: Head has a value less than that of the new node.
         if self.head.data > new_node.data:
             new_node.next = self.head
             self.head.prev = new_node

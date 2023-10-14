@@ -105,7 +105,7 @@ class LinkedList(ListOperations):
         pass
 
     def show(self):
-        # case 1: List is empty
+        # case 1: List is empty.
         if self.head is None:
             print("List is empty")
             return

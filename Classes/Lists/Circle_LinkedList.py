@@ -11,7 +11,7 @@ class CircleLinkedList(ListOperations):
     def add(self, value):
         new_node = Node(value)
 
-        # case 1: List is empty
+        # case 1: List is empty.
         if self.head is None:
             self.head = new_node
             self.tail = new_node

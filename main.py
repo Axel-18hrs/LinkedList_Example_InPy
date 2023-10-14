@@ -9,7 +9,7 @@ doubly_ls.add(4)
 
 doubly_ls.transverse()
 print()
-# doubly_ls.transverse_reverse()
+# doubly
 
 # doubly_circular_ls = DoublyCircleLinkedList()
 # doubly_circular_ls.add(5)
