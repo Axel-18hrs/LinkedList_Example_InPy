@@ -12,7 +12,7 @@ class DoublyCircleLinkedList(ListOperations):
         new_node = DoubleNode(value)
 
         # case 1: The list is empty
-        if self.head is None:
+        if self.is_empty():
             self.head = new_node
             self.head.prev = self.tail
             self.tail = new_node
@@ -83,7 +83,7 @@ class DoublyCircleLinkedList(ListOperations):
 
     def transverse(self):
         # case 1: List is empty
-        if self.head is None:
+        if self.is_empty():
             print("List is empty")
             return
 
@@ -98,7 +98,7 @@ class DoublyCircleLinkedList(ListOperations):
 
     def transverse_reverse(self):
         # case 1: List is empty
-        if self.head is None:
+        if self.is_empty():
             print("List is empty")
             return
 
@@ -113,7 +113,7 @@ class DoublyCircleLinkedList(ListOperations):
 
     def exist(self, data):
         # case 1: List is empty
-        if self.head is None:
+        if self.is_empty():
             print("List is empty")
             return False
 
@@ -132,7 +132,7 @@ class DoublyCircleLinkedList(ListOperations):
     # made by israel and refactored for me
     def search(self, data):
         # case 1: List is empty
-        if self.head is None:
+        if self.is_empty():
             print("List is empty")
             return
 
@@ -152,7 +152,7 @@ class DoublyCircleLinkedList(ListOperations):
 
     def show(self):
         # case 1: List is empty
-        if self.head is None:
+        if self.is_empty():
             print("List is empty")
             return
 
@@ -166,5 +166,13 @@ class DoublyCircleLinkedList(ListOperations):
             i += 1
             if current_node is self.head:
                 break
+        pass
+
+    def is_empty(self):
+        return self.head is None
+        pass
+
+    def clear(self):
+        self.head = None
         pass
         

@@ -30,3 +30,11 @@ class ListOperations(ABC):
     @abstractmethod
     def search(self, data):
         raise NotImplementedError("The 'search' function is not used")
+
+    @abstractmethod
+    def is_empty(self):
+        raise NotImplementedError("The 'is_empty' function is not used")
+
+    @abstractmethod
+    def clear(self):
+        raise NotImplementedError("The 'clear' function is not used")

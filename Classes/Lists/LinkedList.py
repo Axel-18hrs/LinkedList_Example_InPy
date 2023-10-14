@@ -11,7 +11,7 @@ class LinkedList(ListOperations):
         new_node = Node(value)
 
         # case 1: List is empty
-        if self.head is None:
+        if self.is_empty():
             self.head = new_node
             return
 
@@ -54,7 +54,7 @@ class LinkedList(ListOperations):
 
     def transverse(self):
         # case 1: List is empty
-        if self.head is None:
+        if self.is_empty():
             print("List is empty")
             return
 
@@ -70,7 +70,7 @@ class LinkedList(ListOperations):
 
     def exist(self, data):
         # case 1: List is empty
-        if self.head is None:
+        if self.is_empty():
             print("List is empty")
             return False
 
@@ -88,7 +88,7 @@ class LinkedList(ListOperations):
     # Made for israel and refactored for me
     def search(self, data):
         # case 1: List is empty
-        if self.head is None:
+        if self.is_empty():
             print("List is empty")
             return
 
@@ -106,7 +106,7 @@ class LinkedList(ListOperations):
 
     def show(self):
         # case 1: List is empty.
-        if self.head is None:
+        if self.is_empty():
             print("List is empty")
             return
 
@@ -120,4 +120,12 @@ class LinkedList(ListOperations):
             i += 1
             if current_node is None:
                 break
+        pass
+
+    def is_empty(self):
+        return self.head is None
+        pass
+
+    def clear(self):
+        self.head = None
         pass

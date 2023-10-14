@@ -12,7 +12,7 @@ class CircleLinkedList(ListOperations):
         new_node = Node(value)
 
         # case 1: List is empty.
-        if self.head is None:
+        if self.is_empty():
             self.head = new_node
             self.tail = new_node
             new_node.next = self.head
@@ -59,7 +59,7 @@ class CircleLinkedList(ListOperations):
 
     def transverse(self):
         # case 1: List is empty
-        if self.head is None:
+        if self.is_empty():
             print("List is empty")
             return
 
@@ -77,7 +77,7 @@ class CircleLinkedList(ListOperations):
 
     def exist(self, data):
         # case 1: List is empty
-        if self.head is None:
+        if self.is_empty():
             print("List is empty")
             return False
 
@@ -97,7 +97,7 @@ class CircleLinkedList(ListOperations):
     # Made for israel and refactored for me
     def search(self, data):
         # case 1: List is empty
-        if self.head is None:
+        if self.is_empty():
             print("List is empty")
             return
 
@@ -116,7 +116,7 @@ class CircleLinkedList(ListOperations):
 
     def show(self):
         # case 1: List is empty
-        if self.head is None:
+        if self.is_empty():
             print("List is empty")
             return
 
@@ -130,4 +130,12 @@ class CircleLinkedList(ListOperations):
             i += 1
             if current_node is self.head:
                 break
+        pass
+
+    def is_empty(self):
+        return self.head is None
+        pass
+
+    def clear(self):
+        self.head = None
         pass

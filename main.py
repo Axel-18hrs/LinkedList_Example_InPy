@@ -1,6 +1,6 @@
-from Classes.Lists.Circle_LinkedList import CircleLinkedList
+from Classes.Lists.LinkedList import LinkedList
 
-doubly_ls = CircleLinkedList()
+doubly_ls = LinkedList()
 doubly_ls.add(5)
 doubly_ls.add(3)
 doubly_ls.add(1)
