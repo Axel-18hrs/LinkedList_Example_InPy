@@ -1,16 +1,27 @@
-from Classes.Lists.DoublyCircle_LinkedList import DoublyCircleLinkedList
+from Classes.Lists.Circle_LinkedList import CircleLinkedList
 
+doubly_ls = CircleLinkedList()
+doubly_ls.add(5)
+doubly_ls.add(3)
+doubly_ls.add(1)
+doubly_ls.add(2)
+doubly_ls.add(4)
 
-doubly_circular_ls = DoublyCircleLinkedList()
-doubly_circular_ls.add(5)
-doubly_circular_ls.add(3)
-doubly_circular_ls.add(1)
-doubly_circular_ls.add(2)
-doubly_circular_ls.add(4)
-
-doubly_circular_ls.transverse()
+doubly_ls.transverse()
 print()
-doubly_circular_ls.transverse_reverse()
+# doubly_ls.transverse_reverse()
+
+# doubly_circular_ls = DoublyCircleLinkedList()
+# doubly_circular_ls.add(5)
+# doubly_circular_ls.add(3)
+# doubly_circular_ls.add(1)
+# doubly_circular_ls.add(2)
+# doubly_circular_ls.add(4)
+#
+# doubly_circular_ls.transverse()
+# print()
+# doubly_circular_ls.transverse_reverse()
+
 # doubly_ls = DoublyLinkedList()
 #
 # doubly_ls.add(5)
