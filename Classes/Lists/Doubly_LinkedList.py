@@ -51,25 +51,26 @@ class DoublyLinkedList(ListOperations):
         # case 1: the head has the courage to remove
         if self.head.data == data:
             self.head = self.head.next
-            self.head.prev = None
+            return
+
+        # case 3: When the value to be removed is the tail of the list
+        if self.tail.data == data:
+            self.tail = self.tail.prev
+            self.tail.next = None
             return
 
         # case 2: Any of the following nodes has the value to be removed
         current_node = self.head
-        while current_node.next is not None:
-            if current_node.next.data == data:
-                # case 2.1: When the value to be removed is the tail of the list
-                if current_node.next == self.tail:
-                    self.tail = current_node
-                    self.tail = None
-                    return
-                # case 2.2: When the value to be removed is not the tail of the list
-                current_node.next.next.prev = current_node
-                current_node.next = current_node.next.next
-                return
+        while current_node.next is not self.head and current_node.next.data < data:
             current_node = current_node.next
 
-        # case 3: When we reached the end of the list and it was not found
+        # case 4: When the value to be removed is not the tail of the list
+        if current_node.next.data == data:
+            current_node.next.next.prev = current_node
+            current_node.next = current_node.next.next
+            return
+
+        # case 5: When we reached the end of the list and it was not found
         print("Doesn't exist")
         pass
 
@@ -109,14 +110,24 @@ class DoublyLinkedList(ListOperations):
             print("List is empty")
             return False
 
-        # case 2: List is not empty or is not None
+        # case 2: The 'head' node contains the value
+        if self.head.data == data:
+            return True
+
+        # case 3: The 'tail' node contains the value
+        if self.tail.data == data:
+            return True
+
+        # case 4: Any node in the list can have the value
         current_node = self.head
-        while current_node is not None:
-            if current_node.data == data:
-                return True
+        while current_node.next is not None and current_node.next.data <= data:
             current_node = current_node.next
 
-        # case 3: We reached the end and found nothing
+        # case 5: The value already exists in the list
+        if current_node.data == data:
+            return True
+
+        # case 6: We reached the end and found nothing
         return False
         pass
 
@@ -145,18 +156,29 @@ class DoublyLinkedList(ListOperations):
             print("List is empty")
             return
 
-        # case 2: List is not empty or is not None
-        current_node = self.head
-        while True:
-            # case 2.1: We reached the end and found nothing
-            if current_node.data == data:
-                print(f"- Dato[{data}] Existe en la lista")
-                return
+        # case 2: The 'head' node contains the value
+        if self.head.data == data:
+            print(f"- Dato[{data}] Existe en la lista")
+            return
 
+        # case 3: The 'tail' node contains the value
+        if self.tail.data == data:
+            print(f"- Dato[{data}] Existe en la lista")
+            return
+
+        # case 4: Any node in the list can have the value
+        current_node = self.head
+        while current_node.next is not None and current_node.next.data <= data:
             current_node = current_node.next
-            if current_node is self.head:
-                print(f"- Dato[{data}] No Existe en la lista")
-                return
+
+        # case 5: The value already exists in the list
+        if current_node.data == data:
+            print(f"- Dato[{data}] Existe en la lista")
+            return
+
+        # case 6: We reached the end and found nothing
+        print(f"- Dato[{data}] No Existe en la lista")
+        return
         pass
 
     def is_empty(self):

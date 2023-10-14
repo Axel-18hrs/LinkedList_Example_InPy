@@ -42,13 +42,15 @@ class LinkedList(ListOperations):
 
         # case 2: Any of the following nodes has the value to be removed
         current_node = self.head
-        while current_node.next is not None:
-            if current_node.next.data == data:
-                current_node.next = current_node.next.next
-                return
+        while current_node.next is not None and current_node.next.data >= data:
             current_node = current_node.next
 
-        # case 3: When we reached the end of the list and it was not found
+        # case 3: The node to be deleted was found
+        if current_node.next.data == data:
+            current_node.next = current_node.next.next
+            return
+
+        # case 4: Node not found
         print("Doesn't exist")
         pass
 
@@ -74,14 +76,20 @@ class LinkedList(ListOperations):
             print("List is empty")
             return False
 
-        # case 2: List is not empty or is not None
+        # case 2: The 'head' node contains the value
+        if self.head.data == data:
+            return True
+
+        # case 3: Any node in the list can have the value
         current_node = self.head
-        while current_node is not None:
-            if current_node.data == data:
-                return True
+        while current_node.next is not None and current_node.next.data <= data:
             current_node = current_node.next
 
-        # case 3: We reached the end and found nothing
+        # case 4: The value already exists in the list
+        if current_node.data == data:
+            return True
+
+        # case 5: We reached the end and found nothing
         return False
         pass
 
@@ -92,7 +100,12 @@ class LinkedList(ListOperations):
             print("List is empty")
             return
 
-        # case 2: List is not empty or is not None
+        # case 2: The 'head' node contains the value
+        if self.head.data == data:
+            print(f"- Dato[{data}] Existe en la lista")
+            return
+
+        # case 3: List is not empty or is not None
         current_node = self.head
         while current_node is not None:
             if current_node.data == data:
@@ -100,7 +113,7 @@ class LinkedList(ListOperations):
                 return
             current_node = current_node.next
 
-        # case 3: The value is not in the list
+        # case 4: The value is not in the list
         print(f"- Dato[{data}] No Existe en la lista")
         pass
 

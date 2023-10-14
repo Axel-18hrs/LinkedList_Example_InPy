@@ -1,14 +1,18 @@
-from Classes.Lists.LinkedList import LinkedList
+from Classes.Lists.Doubly_LinkedList import DoublyLinkedList
 
-doubly_ls = LinkedList()
+doubly_ls = DoublyLinkedList()
 doubly_ls.add(5)
 doubly_ls.add(3)
 doubly_ls.add(1)
 doubly_ls.add(2)
 doubly_ls.add(4)
+doubly_ls.add(5)
 
+doubly_ls.delete(5)
 doubly_ls.transverse()
-print()
+print(doubly_ls.exist(4))
+print(doubly_ls.exist(48))
+
 # doubly
 
 # doubly_circular_ls = DoublyCircleLinkedList()
