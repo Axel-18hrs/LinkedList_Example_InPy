@@ -30,7 +30,14 @@ class CircleLinkedList(ListOperations):
             self.tail.next = self.head
             return
 
-        # case 4: The value is less than one of the nodes in the list.
+        # case 4: Tail has a value less than that of the new node
+        if new_node.data > self.tail.data:
+            self.tail.next = new_node
+            self.tail = new_node
+            self.tail.next = self.head
+            return
+
+        # case 5: The value is less than one of the nodes in the list.
         current_node = self.head
         while current_node.next is not self.head and current_node.next.data < new_node.data:
             current_node = current_node.next
@@ -48,11 +55,11 @@ class CircleLinkedList(ListOperations):
 
         # case 2: Any of the following nodes has the value to be removed
         current_node = self.head
-        while current_node.next is not self.head and current_node.next.data >= data:
+        while current_node.next is not self.head and current_node.next.data < data:
             current_node = current_node.next
 
         # case 3: When the value to be removed is the tail of the list
-        if current_node.next.data == self.tail.data:
+        if current_node.next.data == data and current_node.next is self.tail:
             self.tail = current_node
             self.tail.next = self.head
             return

@@ -145,7 +145,7 @@ class DoublyCircleLinkedList(ListOperations):
         # case 1: List is empty
         if self.is_empty():
             print("List is empty")
-            return False
+            return
 
         # case 2: The 'head' node contains the value
         if self.head.data == data:
@@ -169,7 +169,6 @@ class DoublyCircleLinkedList(ListOperations):
 
         # case 6: We reached the end and found nothing
         print(f"- Dato[{data}] No Existe en la lista")
-        return
         pass
 
     def show(self):
