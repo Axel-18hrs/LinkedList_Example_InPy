@@ -52,6 +52,7 @@ class DoublyLinkedList(ListOperations):
         if self.head.data == data:
             print(f"- Data[{data}] was removed from the list")
             self.head = self.head.next
+            self.head.back = None
             return
 
         # case 3: When the value to be removed is the tail of the list

@@ -43,9 +43,11 @@ def operation(value):
             doubly_list.add(2)
             doubly_list.add(4)
             doubly_list.show()
+            doubly_list.show_reverse()
             doubly_list.search(100)
             doubly_list.delete(1)
             doubly_list.show()
+            doubly_list.show_reverse()
             doubly_list.search(1)
             print()
 
@@ -57,32 +59,34 @@ def operation(value):
             cd_list.add(2)
             cd_list.add(4)
             cd_list.show()
+            cd_list.show_reverse()
             cd_list.search(100)
             cd_list.delete(1)
             cd_list.show()
+            cd_list.show_reverse()
             cd_list.search(1)
             print()
 
         case 5:
-            input("Fin del programa...")
+            input("End of program...")
             sys.exit()
 
         case x:
-            input("Ingresa un valor de (1 a 5)...")
+            input("Enter a value from (1 to 5)...")
 
 
 while True:
-    print("# Ver todas las Listas #\n" +
-          "[1] Lista simple.\n" +
-          "[2] Lista circular.\n" +
-          "[3] Lista doble enlazada.\n" +
-          "[4] Lista circular doble enlazada.\n" +
-          "[5] Salir.")
+    print("# See all Lists #\n" +
+           "[1] Simple list. \n" +
+           "[2] Circular list.\n" +
+           "[3] Double linked list.\n" +
+           "[4] Circular double linked list.\n" +
+           "[5] Exit.")
 
     try:
-        operation(int(input("Ingresa una opción (1 - 5): ")))
+        operation(int(input("Enter an option (1 - 5): ")))
 
     except ValueError:
         print()
-        input("Ingresa un valor de (1 a 5)...")
+        input("Enter an option (1 - 5)...")
         print("\n" * 10)
