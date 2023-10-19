@@ -17,7 +17,7 @@ class LinkedList(ListOperations):
 
         # case 2: The value already exists
         if self.exist(value):
-            print("It already exists")
+            print(f"- [{value}] Ya existe en la lista")
             return
 
         # case 3: Head has a value greater than that of the new node
@@ -37,27 +37,29 @@ class LinkedList(ListOperations):
     def delete(self, data):
         # case 1: the head has the courage to remove
         if self.head.data == data:
+            print(f"- Dato[{data}] Se elimino de la lista")
             self.head = self.head.next
             return
 
         # case 2: Any of the following nodes has the value to be removed
         current_node = self.head
-        while current_node.next is not None and current_node.next.data >= data:
+        while current_node.next is not None and current_node.next.data < data:
             current_node = current_node.next
 
         # case 3: The node to be deleted was found
         if current_node.next.data == data:
+            print(f"- Dato[{data}] Se elimino de la lista")
             current_node.next = current_node.next.next
             return
 
         # case 4: Node not found
-        print("Doesn't exist")
+        print(f"- Dato[{data}] No Existe en la lista")
         pass
 
     def transverse(self):
         # case 1: List is empty
         if self.is_empty():
-            print("List is empty")
+            print("// La lista esta vacía")
             return
 
         # case 2: List is not empty or is not None
@@ -73,7 +75,7 @@ class LinkedList(ListOperations):
     def exist(self, data):
         # case 1: List is empty
         if self.is_empty():
-            print("List is empty")
+            print("// La lista esta vacía")
             return False
 
         # case 2: The 'head' node contains the value
@@ -97,30 +99,33 @@ class LinkedList(ListOperations):
     def search(self, data):
         # case 1: List is empty
         if self.is_empty():
-            print("List is empty")
-            return
+            print("// La lista esta vacía")
+            return False
 
         # case 2: The 'head' node contains the value
         if self.head.data == data:
             print(f"- Dato[{data}] Existe en la lista")
             return
 
-        # case 3: List is not empty or is not None
+        # case 3: Any node in the list can have the value
         current_node = self.head
-        while current_node is not None:
-            if current_node.data == data:
-                print(f"- Dato[{data}] Existe en la lista")
-                return
+        while current_node.next is not None and current_node.next.data <= data:
             current_node = current_node.next
 
-        # case 4: The value is not in the list
+        # case 4: The value already exists in the list
+        if current_node.data == data:
+            print(f"- Dato[{data}] Existe en la lista")
+            return
+
+        # case 5: We reached the end and found nothing
         print(f"- Dato[{data}] No Existe en la lista")
+        return
         pass
 
     def show(self):
         # case 1: List is empty.
         if self.is_empty():
-            print("List is empty")
+            print("// La lista esta vacía")
             return
 
         # case 2: List is not empty or is not None
@@ -133,6 +138,9 @@ class LinkedList(ListOperations):
             i += 1
             if current_node is None:
                 break
+        pass
+
+    def show_reverse(self):
         pass
 
     def is_empty(self):

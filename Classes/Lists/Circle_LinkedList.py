@@ -20,7 +20,7 @@ class CircleLinkedList(ListOperations):
 
         # case 2: The value already exists
         if self.exist(value):
-            print("It already exists")
+            print(f"- [{value}] Ya existe en la lista")
             return
 
         # case 3: Head has a value less than that of the new node
@@ -49,6 +49,7 @@ class CircleLinkedList(ListOperations):
     def delete(self, data):
         # case 1: the head has the courage to remove
         if self.head.data == data:
+            print(f"- Dato[{data}] Se elimino de la lista")
             self.head = self.head.next
             self.tail.next = self.head
             return
@@ -60,17 +61,19 @@ class CircleLinkedList(ListOperations):
 
         # case 3: When the value to be removed is the tail of the list
         if current_node.next.data == data and current_node.next is self.tail:
+            print(f"- Dato[{data}] Se elimino de la lista")
             self.tail = current_node
             self.tail.next = self.head
             return
 
         # case 4: When the value to be removed is not the tail of the list
         if current_node.next.data == data:
+            print(f"- Dato[{data}] Se elimino de la lista")
             current_node.next = current_node.next.next
             return
 
         # case 5: When we reached the end of the list and it was not found
-        print("Doesn't exist")
+        print(f"- Dato[{data}] No Existe en la lista")
         pass
 
     def transverse(self):
@@ -94,7 +97,7 @@ class CircleLinkedList(ListOperations):
     def exist(self, data):
         # case 1: List is empty
         if self.is_empty():
-            print("List is empty")
+            print("// La lista esta vacia")
             return False
 
         # case 2: The 'head' node contains the value
@@ -122,7 +125,7 @@ class CircleLinkedList(ListOperations):
     def search(self, data):
         # case 1: List is empty
         if self.is_empty():
-            print("List is empty")
+            print("// La lista esta vacia")
             return
 
         # case 2: The 'head' node contains the value
@@ -150,10 +153,13 @@ class CircleLinkedList(ListOperations):
         return
         pass
 
+    def show_reverse(self):
+        pass
+
     def show(self):
         # case 1: List is empty
         if self.is_empty():
-            print("List is empty")
+            print("// La lista esta vacia")
             return
 
         # case 2: List is not empty or is not None
@@ -174,4 +180,5 @@ class CircleLinkedList(ListOperations):
 
     def clear(self):
         self.head = None
+        self.tail = None
         pass

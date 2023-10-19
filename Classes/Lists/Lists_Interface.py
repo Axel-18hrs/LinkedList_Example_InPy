@@ -28,6 +28,10 @@ class ListOperations(ABC):
         raise NotImplementedError("The 'show' function is not used")
 
     @abstractmethod
+    def show_reverse(self):
+        raise NotImplementedError("The 'show_reverse' function is not used")
+
+    @abstractmethod
     def search(self, data):
         raise NotImplementedError("The 'search' function is not used")
 
