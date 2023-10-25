@@ -107,7 +107,7 @@ class LinkedList(ListOperations):
 
         # case 2: The 'head' node contains the data
         if self.head.data == data:
-            print(f"- Data[{data}] was removed from the list")
+            print(f"- Data[{data}] Exist in the list")
             return
 
         # case 3: Any node in the list can have the data
@@ -117,11 +117,11 @@ class LinkedList(ListOperations):
 
         # case 4: The data already exists in the list
         if current_node.data == data:
-            print(f"- Data[{data}] was removed from the list")
+            print(f"- Data[{data}] Exist in the list")
             return
 
         # case 5: We reached the end and found nothing
-        print(f"- Data[{data}] Does not exist in the list")
+        print(f"- Data[{data}] Exist in the list")
         return
         pass
 

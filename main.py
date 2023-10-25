@@ -15,6 +15,7 @@ def operation(value):
             s_list.add(2)
             s_list.add(4)
             s_list.show()
+            s_list.search(4)
             s_list.search(100)
             s_list.remove(1)
             s_list.show()
