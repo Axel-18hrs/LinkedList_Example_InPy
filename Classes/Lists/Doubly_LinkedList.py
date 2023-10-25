@@ -8,8 +8,8 @@ class DoublyLinkedList(ListOperations):
         self.head = None
         self.tail = None
 
-    def add(self, value):
-        new_node = DoubleNode(value)
+    def add(self, data):
+        new_node = DoubleNode(data)
 
         # case 1: The list is empty
         if self.is_empty():
@@ -18,12 +18,12 @@ class DoublyLinkedList(ListOperations):
             return
 
         # case 2: The value exist
-        if self.exist(value):
-            print(f"- [{value}] Already exists in the list")
+        if self.exist(data):
+            print(f"- [{data}] Already exists in the list")
             return
 
         # case 3:Head has a value greater than that of the new node
-        if self.head.data > new_node.data:
+        if new_node.data < self.head.data:
             new_node.next = self.head
             self.head.back = new_node
             self.head = new_node
@@ -47,63 +47,74 @@ class DoublyLinkedList(ListOperations):
         current_node.next = new_node
         pass
 
-    def delete(self, data):
-        # case 1: the head has the courage to remove
+    def remove(self, data):
+        # case 1: list is empty
+        if self.is_empty():
+            print("// List is empty")
+            return
+
+        # case 2: the head has the courage to remove
         if self.head.data == data:
-            print(f"- Data[{data}] was removed from the list")
             self.head = self.head.next
             self.head.back = None
+            print(f"- Data[{data}] was removed from the list")
             return
 
         # case 3: When the value to be removed is the tail of the list
         if self.tail.data == data:
-            print(f"- Data[{data}] was removed from the list")
             self.tail = self.tail.back
             self.tail.next = None
+            print(f"- Data[{data}] was removed from the list")
             return
 
-        # case 2: Any of the following nodes has the value to be removed
+        # case 4: Any of the following nodes has the value to be removed
         current_node = self.head
-        while current_node.next is not None and current_node.next.data < data:
+        while current_node.next is not None and current_node.data < data:
             current_node = current_node.next
 
-        # case 4: When the value to be removed is not the tail of the list
+        # case 5: When the value to be removed is not the tail of the list
         if current_node.data == data:
+            current_node.next.back = current_node.back
+            current_node.back.next = current_node.next
             print(f"- Data[{data}] was removed from the list")
-            current_node.next.next.back = current_node
-            current_node.next = current_node.next.next
             return
 
-        # case 5: When we reached the end of the list and it was not found
+        # case 6: When we reached the end of the list and it was not found
         print(f"- Data[{data}] Does not exist in the list")
         pass
 
-    def transverse(self):
+    def show(self):
         # case 1: List is empty
         if self.is_empty():
             print("// List is empty")
             return
 
         # case 2: List is not empty or is not None
+        print("=== My Doubly Linked List ===")
+        i = 0
         current_node = self.head
         while True:
-            print(current_node.data)
+            print(f"- Node[{i}] and data: {current_node.data}")
             current_node = current_node.next
+            i += 1
             if current_node is None:
-                return
+                break
         pass
 
-    def transverse_reverse(self):
+    def show_reverse(self):
         # case 1: List is empty
         if self.is_empty():
             print("// List is empty")
             return
 
         # case 2: List is not empty or is not None
+        print("=== My Reverse Doubly Linked List ===")
+        i = 0
         current_node = self.tail
         while True:
-            print(current_node.data)
+            print(f"- Node[{i}] and data: {current_node.data}")
             current_node = current_node.back
+            i += 1
             if current_node is None:
                 break
         pass
@@ -133,43 +144,6 @@ class DoublyLinkedList(ListOperations):
 
         # case 6: We reached the end and found nothing
         return False
-        pass
-
-    # Made by israel and refactored for me
-    def show(self):
-        # case 1: List is empty
-        if self.is_empty():
-            print("// List is empty")
-            return
-
-        # case 2: List is not empty or is not None
-        print("=== My Doubly Linked List ===")
-        i = 1
-        current_node = self.head
-        while True:
-            print(f"- Nodo[{i}] y dato: {current_node.data}")
-            current_node = current_node.next
-            i += 1
-            if current_node is None:
-                break
-        pass
-
-    def show_reverse(self):
-        # case 1: List is empty
-        if self.is_empty():
-            print("// List is empty")
-            return
-
-        # case 2: List is not empty or is not None
-        print("=== My Reverse Doubly Linked List ===")
-        i = 1
-        current_node = self.tail
-        while True:
-            print(f"- Nodo[{i}] y dato: {current_node.data}")
-            current_node = current_node.back
-            i += 1
-            if current_node is None:
-                break
         pass
 
     def search(self, data):

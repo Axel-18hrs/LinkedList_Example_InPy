@@ -15,7 +15,7 @@ class CircleLinkedList(ListOperations):
         if self.is_empty():
             self.head = new_node
             self.tail = new_node
-            new_node.next = self.head
+            self.tail.next = self.head
             return
 
         # case 2: The value already exists
@@ -24,7 +24,7 @@ class CircleLinkedList(ListOperations):
             return
 
         # case 3: Head has a value less than that of the new node
-        if self.head.data > new_node.data:
+        if new_node.data < self.head.data:
             new_node.next = self.head
             self.head = new_node
             self.tail.next = self.head
@@ -37,7 +37,7 @@ class CircleLinkedList(ListOperations):
             self.tail.next = self.head
             return
 
-        # case 5: The value is less than one of the nodes in the list.
+        # case 5: The value will be placed in an unknown position
         current_node = self.head
         while current_node.next is not self.head and current_node.next.data < new_node.data:
             current_node = current_node.next
@@ -46,12 +46,12 @@ class CircleLinkedList(ListOperations):
         current_node.next = new_node
         pass
 
-    def delete(self, data):
+    def remove(self, data):
         # case 1: the head has the courage to remove
         if self.head.data == data:
-            print(f"- Data[{data}] was removed from the list")
             self.head = self.head.next
             self.tail.next = self.head
+            print(f"- Data[{data}] was removed from the list")
             return
 
         # case 2: Any of the following nodes has the value to be removed
@@ -61,37 +61,40 @@ class CircleLinkedList(ListOperations):
 
         # case 3: When the value to be removed is the tail of the list
         if current_node.next.data == data and current_node.next is self.tail:
-            print(f"- Data[{data}] was removed from the list")
             self.tail = current_node
             self.tail.next = self.head
+            print(f"- Data[{data}] was removed from the list")
             return
 
         # case 4: When the value to be removed is not the tail of the list
         if current_node.next.data == data:
-            print(f"- Data[{data}] was removed from the list")
             current_node.next = current_node.next.next
+            print(f"- Data[{data}] was removed from the list")
             return
 
         # case 5: When we reached the end of the list and it was not found
         print(f"- Data[{data}] Does not exist in the list")
         pass
 
-    def transverse(self):
+    def show(self):
         # case 1: List is empty
         if self.is_empty():
             print("// List is empty")
             return
 
         # case 2: List is not empty or is not None
+        print("=== My Circle list ===")
+        i = 0
         current_node = self.head
         while True:
-            print(current_node.data)
+            print(f"- Node[{i}] and data: {current_node.data}")
             current_node = current_node.next
+            i += 1
             if current_node is self.head:
                 break
         pass
 
-    def transverse_reverse(self):
+    def show_reverse(self):
         pass
 
     def exist(self, data):
@@ -110,7 +113,7 @@ class CircleLinkedList(ListOperations):
 
         # case 4: Any node in the list can have the value
         current_node = self.head
-        while current_node.next is not self.head and current_node.next.data <= data:
+        while current_node.next is not self.head and current_node.data < data:
             current_node = current_node.next
 
         # case 5: The value already exists in the list
@@ -121,7 +124,6 @@ class CircleLinkedList(ListOperations):
         return False
         pass
 
-    # Made for israel and refactored for me
     def search(self, data):
         # case 1: List is empty
         if self.is_empty():
@@ -140,7 +142,7 @@ class CircleLinkedList(ListOperations):
 
         # case 4: Any node in the list can have the value
         current_node = self.head
-        while current_node.next is not self.head and current_node.next.data <= data:
+        while current_node.next is not self.head and current_node.data < data:
             current_node = current_node.next
 
         # case 5: The value already exists in the list
@@ -151,27 +153,6 @@ class CircleLinkedList(ListOperations):
         # case 6: We reached the end and found nothing
         print(f"- Data[{data}] Does not exist in the list")
         return
-        pass
-
-    def show_reverse(self):
-        pass
-
-    def show(self):
-        # case 1: List is empty
-        if self.is_empty():
-            print("// List is empty")
-            return
-
-        # case 2: List is not empty or is not None
-        print("=== My simple list ===")
-        i = 1
-        current_node = self.head
-        while True:
-            print(f"- Node[{i}] and data: {current_node.data}")
-            current_node = current_node.next
-            i += 1
-            if current_node is self.head:
-                break
         pass
 
     def is_empty(self):
